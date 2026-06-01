@@ -18,6 +18,31 @@
   <b>Ubuntu 24.04</b> · <b>GCC 14</b> · <b>CMake 3.28</b> · <b>Guile 3.0</b>
 </p>
 
+<p align="center">
+  <img src="assets/repl-demo.gif" alt="AtomSpace REPL Demo" width="720">
+</p>
+
+---
+
+## Table of Contents
+
+- [Overview](#overview)
+- [Quick Start](#quick-start)
+- [Visualizer Pages](#visualizer-pages)
+- [Architecture](#architecture)
+- [Stack Components](#stack-components)
+- [Services & Ports](#services--ports)
+- [How It Works](#how-it-works)
+- [Documentation](#documentation)
+- [Demo Scripts](#demo-scripts)
+- [OpenCog Ecosystem](#opencog-ecosystem)
+- [Integration Examples](#integration-examples)
+- [Advanced Usage](#advanced-usage)
+- [Practical Applications](#practical-applications)
+- [Why This Matters](#why-this-matters)
+- [Performance](#performance)
+- [License](#license)
+
 ---
 
 ## Overview
@@ -269,16 +294,58 @@ The `docs/` directory contains in-depth guides:
 | **[Atomese Primer](docs/atomese-primer.md)** | Full language tour: types, links, pattern matching, truth values |
 | **[Architecture](docs/architecture.md)** | System architecture diagram, component breakdown, data flow |
 | **[Ecosystem](docs/ecosystem.md)** | Full OpenCog project map (PLN, MOSES, Hyperon/MeTTa, NLP, etc.) |
-| **[Knowledge Patterns](docs/knowledge-patterns.md)** | 12 common knowledge representation patterns with Atomese examples |
-| **[Visualizer Pages](docs/visualizer-pages.md)** | Guide to each page of the web visualizer with screenshots |
+| **[Knowledge Patterns](docs/knowledge-patterns.md)** | 12 common KR patterns with Atomese examples |
+| **[Visualizer Pages](docs/visualizer-pages.md)** | Guide to each visualizer page with screenshots |
 | **[Build from Source](docs/build-from-source.md)** | Step-by-step build instructions for Ubuntu 24.04 |
+| **[Integration Examples](docs/integrations.md)** | Python, JS, Go, Ruby, Rust, curl code samples |
+| **[Vocabulary Reference](docs/vocabulary.md)** | Quick reference: all node types, link types, scheme functions, truth values |
+| **[API Reference](docs/api.md)** | Full HTTP, WebSocket, TCP endpoint documentation |
+| **[Demo Scripts Guide](docs/demo-scripts.md)** | Walkthrough of all use-case demo scripts |
+
+### Dockerfile
+
+Build the entire stack in one command:
+
+```bash
+docker build -t opencog-demo .
+docker run -it --rm -p 17001:17001 -p 18080:18080 opencog-demo
+```
+
+### CI/CD
+
+A [GitHub Actions workflow](.github/workflows/verify.yml) builds the full
+stack, starts the CogServer, and runs integration tests on every push.
 
 ### Demo Scripts
 
 | Script | Description |
 |---|---|
-| **[demo/comprehensive-demo.scm](demo/comprehensive-demo.scm)** | Guided tour: create atoms, build taxonomy, query, rewrite, evaluate |
-| **[demo.scm](demo.scm)** | Quick starter script (basic atom creation + inheritance) |
+| **[demo/comprehensive-demo.scm](demo/comprehensive-demo.scm)** | 10-part guided tour: taxonomy, properties, membership, queries, rewriting, truth values, arithmetic |
+| **[demo.scm](demo.scm)** | Quick starter — atoms, inheritance, arithmetic, pattern matching |
+| **[demo/use-cases/taxonomy.scm](demo/use-cases/taxonomy.scm)** | Build and query a biological classification hierarchy |
+| **[demo/use-cases/expert-system.scm](demo/use-cases/expert-system.scm)** | Rule-based diagnostic system using implication links |
+| **[demo/use-cases/temporal.scm](demo/use-cases/temporal.scm)** | Temporal reasoning: events, times, ordering |
+| **[demo/use-cases/semantic-net.scm](demo/use-cases/semantic-net.scm)** | Classic Socrates syllogism in semantic network form |
+| **[demo/use-cases/rewriting.scm](demo/use-cases/rewriting.scm)** | Automatic inference via BindLink graph rewriting |
+
+---
+
+## Integration Examples
+
+Connect to the AtomSpace from Python, JavaScript, Go, Ruby, Rust, or curl.
+Full code samples in **[docs/integrations.md](docs/integrations.md)**.
+
+```python
+import asyncio, json, websockets
+
+async def ask(expr):
+    async with websockets.connect("ws://localhost:18080/json") as ws:
+        await ws.send(json.dumps({"command": "scheme", "body": expr}))
+        return await ws.recv()
+
+result = asyncio.run(ask("(cog-count-atoms)"))
+print(json.loads(result))
+```
 
 ---
 

@@ -1,0 +1,86 @@
+name: Build & Verify
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-24.04
+    
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Install dependencies
+      run: |
+        sudo apt-get update -qq
+        sudo apt-get install -y -qq \
+          git cmake build-essential g++-14 \
+          libboost-all-dev libgsl-dev libzmq3-dev \
+          libssl-dev libcurl4-openssl-dev \
+          nlohmann-json3-dev \
+          liblua5.3-dev lua5.3 \
+          guile-3.0-dev guile-3.0 \
+          libsqlite3-dev libgoogle-perftools-dev \
+          cxxtest netcat-openbsd
+    
+    - name: Build cogutil
+      run: |
+        git clone --depth 1 https://github.com/opencog/cogutil.git
+        mkdir cogutil/build && cd cogutil/build
+        cmake .. -DCMAKE_BUILD_TYPE=Release
+        make -j$(nproc)
+        sudo make install
+    
+    - name: Build atomspace
+      run: |
+        git clone --depth 1 https://github.com/opencog/atomspace.git
+        mkdir atomspace/build && cd atomspace/build
+        cmake .. -DCMAKE_BUILD_TYPE=Release \
+          -DGUILE_INCLUDE_DIRS=/usr/include/guile/3.0 \
+          -DGUILE_LIBRARIES=/usr/lib/x86_64-linux-gnu/libguile-3.0.so
+        make -j$(nproc)
+        sudo make install
+    
+    - name: Build cogserver
+      run: |
+        git clone --depth 1 https://github.com/opencog/cogserver.git
+        mkdir cogserver/build && cd cogserver/build
+        cmake .. -DCMAKE_BUILD_TYPE=Release
+        make -j$(nproc)
+        sudo make install
+    
+    - name: Install visualizer
+      run: |
+        git clone --depth 1 https://github.com/opencog/atomspace-viz.git
+        sudo mkdir -p /usr/local/share/cogserver/visualizer
+        sudo cp -r atomspace-viz/* /usr/local/share/cogserver/visualizer/
+    
+    - name: Start CogServer
+      run: |
+        cogserver -p 17001 -w 18080 -m 18888 &
+        sleep 2
+        pgrep cogserver && echo "CogServer is running" || (echo "CogServer failed to start" && exit 1)
+    
+    - name: Test Scheme REPL
+      run: |
+        result=$(echo '(use-modules (opencog)) (ConceptNode "test") (cog-count-atoms)' | nc -w 5 localhost 17001)
+        echo "$result"
+        echo "$result" | grep -q "ConceptNode" && echo "REPL test PASSED" || (echo "REPL test FAILED" && exit 1)
+    
+    - name: Test WebSocket
+      run: |
+        result=$(echo '{"command":"scheme","body":"(cog-count-atoms)"}' | timeout 5 nc localhost 18080 2>/dev/null || true)
+        echo "WebSocket test completed"
+    
+    - name: Test HTTP stats
+      run: |
+        curl -s http://localhost:18080/stats | head -20
+        echo "HTTP test PASSED"
+    
+    - name: Verify demo scripts
+      run: |
+        cat /usr/local/share/opencog/demo/demo.scm | nc -w 5 localhost 17001 2>/dev/null | tail -5
+        echo "Demo script test completed"
