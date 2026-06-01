@@ -103,6 +103,31 @@ Storage backend implementations for the AtomSpace:
 | **Extendible AI** | Bridge between AtomSpace and ROS (Robot Operating System) |
 | **Virtual World** | 3D simulation environment for training embodied agents |
 
+## Community
+
+| Channel | Link | Purpose |
+|---|---|---|
+| **Discord** | https://discord.gg/vxPc6sz | Daily chat — most active community hub |
+| **GitHub** | https://github.com/opencog | 90+ repos, 500+ followers — all source code |
+| **Wiki** | https://wiki.opencog.org | Documentation, tutorials, concepts |
+| **Mailing List** | opencog@googlegroups.com | Long-form discussion, announcements |
+| **Blog** | https://blog.opencog.org | Project updates, research posts |
+| **Reddit** | https://reddit.com/r/opencog | Community discussion |
+
+### Key People
+
+| Person | Role |
+|---|---|
+| **Ben Goertzel** | Founder, original architect; CEO of SingularityNET & ASI Alliance |
+| **Linas Vepstas** | Primary maintainer of OpenCog Classic (AtomSpace, Link Grammar) |
+| **Vitaly Bogdanov** | AtomSpace, CogServer, storage backends |
+| **Nil Geisweiller** | PLN, pattern miner, learning algorithms |
+| **Zarathustra Goertzel** | Hyperon / MeTTa, distributed systems |
+| **Matthew Ikle'** | PLN, probabilistic reasoning |
+| **Lucius Greg Meredith** | MeTTa language design, process algebra |
+
+Full credits in [CONTRIBUTORS.md](/CONTRIBUTORS.md).
+
 ## Next Generation: Hyperon
 
 The **OpenCog Hyperon** project is the next-generation architecture

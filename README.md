@@ -6,8 +6,10 @@
   <a href="https://opencog.org"><img src="https://img.shields.io/badge/OpenCog-AtomSpace-2ea44f"></a>
   <a href="LICENSE"><img src="https://img.shields.io/badge/License-AGPL--3.0-blue"></a>
   <a href="https://github.com/opencog/atomspace"><img src="https://img.shields.io/badge/AtomSpace-v5.0.3--stable-blueviolet"></a>
+  <a href="CONTRIBUTORS.md"><img src="https://img.shields.io/badge/Contributors-80%2B-orange"></a>
   <a href="Dockerfile"><img src="https://img.shields.io/badge/Docker-ready-2496ED?logo=docker"></a>
   <a href=".github/workflows/verify.yml"><img src="https://img.shields.io/badge/CI-build%20%26%20test-success"></a>
+  <a href="https://discord.gg/vxPc6sz"><img src="https://img.shields.io/badge/Discord-join-5865F2?logo=discord"></a>
 </p>
 
 ---
@@ -227,6 +229,33 @@ The OpenCog AtomSpace has been in **continuous development since 2008**. This de
 
 ---
 
+## Community
+
+The OpenCog project has been built by **80+ contributors** over **20+ years**,
+from the original Novamente Cognition Engine (2001) through OpenCog Classic
+(2008) to today's Hyperon / MeTTa (active development at TrueAGI).
+
+| Channel | Link | Purpose |
+|---|---|---|
+| **Discord** | https://discord.gg/vxPc6sz | Daily chat — most active community hub |
+| **GitHub** | https://github.com/opencog | 90+ repos, 500+ followers — code, issues, PRs |
+| **Wiki** | https://wiki.opencog.org | Tutorials, concepts, architecture docs |
+| **Mailing List** | opencog@googlegroups.com | Long-form discussion, announcements |
+| **Blog** | https://blog.opencog.org | Project updates, research posts |
+| **Reddit** | https://reddit.com/r/opencog | Community discussion |
+| **Hyperon Tutorials** | https://metta-lang.dev/docs/learn/learn.html | Learn the successor MeTTa language |
+
+**How to get involved:**
+1. Join the [Discord](https://discord.gg/vxPc6sz) — this is where daily development discussion happens
+2. Browse open [AtomSpace issues](https://github.com/opencog/atomspace/issues) or [Hyperon issues](https://github.com/trueagi-io/hyperon-wasm/issues)
+3. Submit PRs — all repositories accept contributions
+4. Contact **Linas Vepstas** (linasvepstas@gmail.com) for developer onboarding to OpenCog Classic
+5. Explore [SingularityNET Deep Funding](https://deepfunding.ai) for AGI research grants
+
+Full contributor credits in [CONTRIBUTORS.md](CONTRIBUTORS.md).
+
+---
+
 ## License
 
 **AGPL-3.0** — see [LICENSE](LICENSE). Upstream components are AGPL-3.0 or LGPL-3.0.
@@ -237,6 +266,8 @@ The OpenCog AtomSpace has been in **continuous development since 2008**. This de
   <sub>
     <a href="https://opencog.org">OpenCog.org</a> ·
     <a href="https://github.com/opencog/atomspace">AtomSpace on GitHub</a> ·
+    <a href="https://github.com/trueagi-io/hyperon-wasm">Hyperon / MeTTa</a> ·
+    <a href="https://discord.gg/vxPc6sz">Discord</a> ·
     Built with <a href="https://opencode.ai">OpenCode</a>
   </sub>
 </p>
