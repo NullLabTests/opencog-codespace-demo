@@ -8,9 +8,9 @@ from simple to advanced.
 The simplest and most common pattern: X is a type of Y.
 
 ```scheme
-(InheritanceLink (ConceptNode "poodle") (ConceptNode "dog"))
-(InheritanceLink (ConceptNode "dog")    (ConceptNode "mammal"))
-(InheritanceLink (ConceptNode "mammal") (ConceptNode "animal"))
+(Inheritance (Concept "poodle") (Concept "dog"))
+(Inheritance (Concept "dog")    (Concept "mammal"))
+(Inheritance (Concept "mammal") (Concept "animal"))
 ```
 
 **Use case:** Taxonomies, ontologies, class hierarchies.
@@ -20,9 +20,9 @@ The simplest and most common pattern: X is a type of Y.
 An entity has some attribute or property.
 
 ```scheme
-(EvaluationLink
-    (PredicateNode "has-color")
-    (ListLink (ConceptNode "sky") (ConceptNode "blue")))
+(Evaluation
+    (Predicate "has-color")
+    (List (Concept "sky") (Concept "blue")))
 ```
 
 **Use case:** Describing properties of objects (color, size, weight, etc.).
@@ -32,13 +32,13 @@ An entity has some attribute or property.
 A structured frame with multiple slots:
 
 ```scheme
-(EvaluationLink
-    (PredicateNode "person")
-    (ListLink
-        (ConceptNode "alice")
-        (ConceptNode "age"      (NumberNode 30))
-        (ConceptNode "occupation" (ConceptNode "engineer"))
-        (ConceptNode "location"   (ConceptNode "new-york"))))
+(Evaluation
+    (Predicate "person")
+    (List
+        (Concept "alice")
+        (Concept "age"      (NumberNode 30))
+        (Concept "occupation" (Concept "engineer"))
+        (Concept "location"   (Concept "new-york"))))
 ```
 
 **Use case:** Complex entity descriptions with multiple attributes.
@@ -48,12 +48,12 @@ A structured frame with multiple slots:
 A relation between two or more entities:
 
 ```scheme
-(EvaluationLink
-    (PredicateNode "between")
-    (ListLink
-        (ConceptNode "san-francisco")
-        (ConceptNode "los-angeles")
-        (ConceptNode "san-diego")))
+(Evaluation
+    (Predicate "between")
+    (List
+        (Concept "san-francisco")
+        (Concept "los-angeles")
+        (Concept "san-diego")))
 ```
 
 **Use case:** Spatial, temporal, and other multi-argument relations.
@@ -63,9 +63,9 @@ A relation between two or more entities:
 An entity belongs to a set or category:
 
 ```scheme
-(MemberLink
-    (ConceptNode "alice")
-    (ConceptNode "programmers"))
+(Member
+    (Concept "alice")
+    (Concept "programmers"))
 ```
 
 **Use case:** Categories that aren't inheritance-based; grouping.
@@ -75,9 +75,9 @@ An entity belongs to a set or category:
 One entity is part of another:
 
 ```scheme
-(PartOfLink
-    (ConceptNode "wheel")
-    (ConceptNode "car"))
+(PartOf
+    (Concept "wheel")
+    (Concept "car"))
 ```
 
 **Use case:** Compositional hierarchies, physical parts.
@@ -87,9 +87,9 @@ One entity is part of another:
 Two entities are similar in some respect:
 
 ```scheme
-(SimilarityLink
-    (ConceptNode "car")
-    (ConceptNode "truck"))
+(Similarity
+    (Concept "car")
+    (Concept "truck"))
 ```
 
 **Use case:** Analogies, similarity-based reasoning.
@@ -99,9 +99,9 @@ Two entities are similar in some respect:
 Two entities are associated (non-hierarchical connection):
 
 ```scheme
-(AssociativeLink
-    (ConceptNode "rain")
-    (ConceptNode "umbrella"))
+(Associative
+    (Concept "rain")
+    (Concept "umbrella"))
 ```
 
 **Use case:** Weak associations, common sense, co-occurrence data.
@@ -111,9 +111,9 @@ Two entities are associated (non-hierarchical connection):
 An event at a specific time:
 
 ```scheme
-(AtTimeLink
-    (ConceptNode "meeting")
-    (TimeNode "2026-06-01 17:00:00"))
+(AtTime
+    (Concept "meeting")
+    (Time "2026-06-01 17:00:00"))
 ```
 
 **Use case:** Scheduling, event sequences, temporal reasoning.
@@ -123,13 +123,13 @@ An event at a specific time:
 If X holds, then Y holds:
 
 ```scheme
-(ImplicationLink
-    (EvaluationLink
-        (PredicateNode "is-raining")
-        (ListLink (ConceptNode "outside")))
-    (EvaluationLink
-        (PredicateNode "is-wet")
-        (ListLink (ConceptNode "ground"))))
+(Implication
+    (Evaluation
+        (Predicate "is-raining")
+        (List (Concept "outside")))
+    (Evaluation
+        (Predicate "is-wet")
+        (List (Concept "ground"))))
 ```
 
 **Use case:** Rules, cause-effect, logical implications.
@@ -139,15 +139,15 @@ If X holds, then Y holds:
 For all X with property P, statement Q holds:
 
 ```scheme
-(ForAllLink
-    (ListLink (VariableNode "$X"))
-    (ImplicationLink
-        (InheritanceLink
-            (VariableNode "$X")
-            (ConceptNode "bird"))
-        (EvaluationLink
-            (PredicateNode "has-feathers")
-            (ListLink (VariableNode "$X")))))
+(ForAll
+    (List (Variable "$X"))
+    (Implication
+        (Inheritance
+            (Variable "$X")
+            (Concept "bird"))
+        (Evaluation
+            (Predicate "has-feathers")
+            (List (Variable "$X")))))
 ```
 
 **Use case:** General knowledge, rules with universal quantification.
@@ -158,10 +158,10 @@ Call into external code:
 
 ```scheme
 ;; GroundedSchemaNode calls a Python or C++ function
-(ExecutionLink
-    (GroundedSchemaNode "py: my_module.my_function")
-    (ListLink (ConceptNode "input"))
-    (ConceptNode "output"))
+(Execution
+    (GroundedSchema "py: my_module.my_function")
+    (List (Concept "input"))
+    (Concept "output"))
 ```
 
 **Use case:** Connecting the AtomSpace to external systems, APIs, sensors.

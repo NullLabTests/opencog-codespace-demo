@@ -90,7 +90,7 @@ sudo cp -r atomspace-viz/* /usr/local/share/cogserver/visualizer/
 cogserver -p 17001 -w 18080 -m 18888 &
 
 # Test the REPL
-echo '(use-modules (opencog)) (ConceptNode "test") (cog-count-atoms)' | \
+echo '(use-modules (opencog)) (Concept "test") (cog-count-atoms)' | \
     nc localhost 17001
 
 # Open the web UI

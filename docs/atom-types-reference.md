@@ -101,12 +101,12 @@ Atom
 (cog-get-types)
 
 ;; Get type of a specific atom
-(cog-type (ConceptNode "test"))
+(cog-type (Concept "test"))
 
 ;; Get parent type
-(cog-type (TypeNode "ConceptNode"))
+(cog-type (Type "ConceptNode"))
 
 ;; Check if atom is a node or link
-(cog-node? (ConceptNode "test"))
+(cog-node? (Concept "test"))
 (cog-link? (InheritanceLink ...))
 ```

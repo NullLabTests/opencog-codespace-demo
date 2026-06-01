@@ -65,7 +65,7 @@ A developer tool for sending raw JSON commands to the CogServer over
 WebSocket. Each command is a JSON object:
 
 ```json
-{"command": "scheme", "body": "(ConceptNode \"test\")"}
+{"command": "scheme", "body": "(Concept \"test\")"}
 ```
 
 Response appears in the right-hand panel. Useful for debugging and

@@ -34,7 +34,7 @@ and more. See the [demo scripts](/demo) for examples.
 
 ### How do I clear the atomspace?
 ```scheme
-(cog-delete-recursive (ConceptNode "whatever"))
+(cog-delete-recursive (Concept "whatever"))
 ```
 Or, for a full reset, restart the CogServer.
 
@@ -54,7 +54,8 @@ Python and JSON shells are also available.
 
 ### Can I persist data?
 Yes. The AtomSpace supports RocksDB and PostgreSQL backends. See the
-[Advanced Usage](/README.md#advanced-usage) section in the README.
+[Architecture](/README.md#architecture) section in the README for
+details on storage backends.
 
 ### What are the system requirements?
 - **Build:** Ubuntu 24.04, GCC 14, CMake 3.28, 4 GB RAM, 4 cores (~12 min)

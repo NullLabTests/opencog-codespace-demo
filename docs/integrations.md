@@ -28,7 +28,7 @@ async def ask_cogserver(expression, host="localhost", port=18080):
 
 async def main():
     # Create atoms
-    r1 = await ask_cogserver('(ConceptNode "python-test")')
+    r1 = await ask_cogserver('(Concept "python-test")')
     print("Created:", r1)
 
     # Query
@@ -94,7 +94,7 @@ async function askCogserver(expression) {
 }
 
 (async () => {
-    const r1 = await askCogserver('(ConceptNode "js-test")');
+    const r1 = await askCogserver('(Concept "js-test")');
     console.log('Created:', r1.result);
 
     const r2 = await askCogserver('(cog-count-atoms)');
@@ -110,7 +110,7 @@ const ws = new WebSocket('ws://localhost:18080/json');
 ws.onopen = () => {
     ws.send(JSON.stringify({
         command: 'scheme',
-        body: '(ConceptNode "browser-test")'
+        body: '(Concept "browser-test")'
     }));
 };
 
@@ -150,7 +150,7 @@ echo '{"command":"scheme","body":"(cog-count-atoms)"}' | \
 ### Raw TCP via netcat
 
 ```bash
-echo '(ConceptNode "bash-test") (cog-count-atoms)' | nc localhost 17001
+echo '(Concept "bash-test") (cog-count-atoms)' | nc localhost 17001
 ```
 
 ---
@@ -178,7 +178,7 @@ func main() {
 
     msg, _ := json.Marshal(map[string]string{
         "command": "scheme",
-        "body":    "(ConceptNode \"go-test\")",
+        "body":    "(Concept \"go-test\")",
     })
     conn.WriteMessage(websocket.TextMessage, msg)
 
@@ -204,7 +204,7 @@ end
 ws.on :open do
   ws.send JSON.generate({
     command: 'scheme',
-    body: '(ConceptNode "ruby-test")'
+    body: '(Concept "ruby-test")'
   })
 end
 
@@ -224,7 +224,7 @@ fn main() {
     
     let msg = serde_json::json!({
         "command": "scheme",
-        "body": "(ConceptNode \"rust-test\")"
+        "body": "(Concept \"rust-test\")"
     });
     
     socket.send(Message::Text(msg.to_string())).unwrap();
@@ -243,7 +243,7 @@ fn main() {
 ```json
 {
     "command": "scheme",
-    "body": "(ConceptNode \"hello\")"
+    "body": "(Concept \"hello\")"
 }
 ```
 
@@ -260,7 +260,7 @@ Supported `command` values:
 ```json
 {
     "status": "ok",
-    "result": "(ConceptNode \"hello\")\n",
+    "result": "(Concept \"hello\")\n",
     "type": "json"
 }
 ```

@@ -28,6 +28,11 @@ and paste the contents.
 | [math-reasoning.scm](math-reasoning.scm) | Mathematics | Arithmetic truths, geometric properties |
 | [reasoning-pipeline.scm](reasoning-pipeline.scm) | Multi-domain | Chain: taxonomy → properties → rewrite → cross-query |
 | [rewriting.scm](rewriting.scm) | Inference | BindLink-based automatic knowledge inference |
+| [chatbot-memory.scm](chatbot-memory.scm) | Conversational | Message history, user facts, temporal order |
+| [diagnostics.scm](diagnostics.scm) | Automotive | Multi-symptom diagnostic rules |
+| [geography.scm](geography.scm) | Geography | Countries, capitals, continents, population |
+| [music-theory.scm](music-theory.scm) | Music | Notes, scales, chords, intervals |
+| [recipe-knowledge.scm](recipe-knowledge.scm) | Cooking | Recipes, ingredients, dietary categories |
 
 ## Suggested Order
 

@@ -1,9 +1,8 @@
 ;; ============================================================
 ;; OpenCog AtomSpace — Quick Demo
 ;; ============================================================
-;; This script creates atoms, builds relationships, runs queries,
-;; and evaluates arithmetic — everything you need to verify that
-;; the AtomSpace is alive and working.
+;; Creates atoms, builds relationships, runs queries,
+;; and evaluates arithmetic.
 ;;
 ;; Usage:
 ;;   cat demo.scm | nc localhost 17001
@@ -13,14 +12,14 @@
 (use-modules (opencog))
 
 (display "=== Creating Atoms ===\n")
-(ConceptNode "hello-world")
-(ConceptNode "opencog")
-(ConceptNode "AGI")
+(Concept "hello-world")
+(Concept "opencog")
+(Concept "AGI")
 
 (display "\n=== Creating Relationships ===\n")
-(InheritanceLink (ConceptNode "cat") (ConceptNode "animal"))
-(InheritanceLink (ConceptNode "dog") (ConceptNode "animal"))
-(InheritanceLink (ConceptNode "animal") (ConceptNode "living-thing"))
+(Inheritance (Concept "cat") (Concept "animal"))
+(Inheritance (Concept "dog") (Concept "animal"))
+(Inheritance (Concept "animal") (Concept "living-thing"))
 
 (display "\n=== Arithmetic Evaluation ===\n")
 (cog-evaluate! (Plus (Number 1) (Number 2)))
@@ -29,7 +28,7 @@
 
 (display "\n=== Pattern Matching ===\n")
 (display "All children of 'animal':\n")
-(cog-execute! (Get (InheritanceLink (VariableNode "$X") (ConceptNode "animal"))))
+(cog-execute! (Get (Inheritance (Variable "$X") (Concept "animal"))))
 
 (display "\n=== Atom Count ===\n")
 (display (cog-count-atoms))

@@ -25,11 +25,11 @@ telnet localhost 17001    # Connect to the Scheme REPL
 Then create your first atoms:
 
 ```scheme
-(ConceptNode "hello-world")
-(ConceptNode "opencog")
-(InheritanceLink (ConceptNode "cat") (ConceptNode "animal"))
+(Concept "hello-world")
+(Concept "opencog")
+(Inheritance (Concept "cat") (Concept "animal"))
 (cog-evaluate! (Plus (Number 1) (Number 2)))
-(cog-execute! (Get (InheritanceLink (VariableNode "$X") (ConceptNode "animal"))))
+(cog-execute! (Get (Inheritance (Variable "$X") (Concept "animal"))))
 ```
 
 **Also try:**
@@ -149,16 +149,25 @@ See [docs/architecture.md](docs/architecture.md) for the full ASCII diagram and 
 | Best Practices | [docs/best-practices.md](docs/best-practices.md) | Naming, ontology design, query optimization |
 | Build from Source | [docs/build-from-source.md](docs/build-from-source.md) | Step-by-step build instructions for Ubuntu 24.04 |
 | FAQ | [docs/faq.md](docs/faq.md) | Frequently asked questions |
-| Getting Involved | [docs/getting-involved.md](docs/getting-involved.md) | How to contribute to upstream OpenCog
+| Getting Involved | [docs/getting-involved.md](docs/getting-involved.md) | How to contribute to upstream OpenCog |
+| Neuro-Symbolic AI | [docs/neuro-symbolic.md](docs/neuro-symbolic.md) | Bridge AtomSpace with LLMs |
+| Performance Guide | [docs/performance-guide.md](docs/performance-guide.md) | Throughput, query optimization, memory |
+| Migration Guide | [docs/migration-guide.md](docs/migration-guide.md) | Classic → Hyperon / MeTTa |
+| History | [docs/history.md](docs/history.md) | OpenCog timeline 2001–present |
 
 ### Demo Scripts
 
-All scripts run with `cat <script> | nc localhost 17001`. See [demo/use-cases/README.md](demo/use-cases/README.md) for details.
+All 23 scripts run with `cat <script> | nc localhost 17001`. See [demo/use-cases/README.md](demo/use-cases/README.md) for details.
 
 | Script | Domain | Concepts |
 |---|---|---|
 | [comprehensive-demo.scm](demo/comprehensive-demo.scm) | General | 10-part guided tour: taxonomy, properties, queries, rewriting, truth values, arithmetic |
 | [demo.scm](demo.scm) | General | Quick starter — atoms, inheritance, arithmetic |
+| [evaluation-demo.scm](demo/evaluation-demo.scm) | AI | Neuro-symbolic knowledge base with LLM-style queries |
+| [stress-test.scm](demo/stress-test.scm) | Perf | Bulk creation of 1000 atoms with timing |
+| [truth-values.scm](demo/truth-values.scm) | System | STV, defaults, components, merge operations |
+| [values-api.scm](demo/values-api.scm) | System | FloatValue, StringValue, key-value store per atom |
+| [rest-api.scm](demo/rest-api.scm) | API | HTTP stats endpoint usage |
 | [taxonomy.scm](demo/use-cases/taxonomy.scm) | Biology | Inheritance hierarchy, classification queries |
 | [family-tree.scm](demo/use-cases/family-tree.scm) | Genealogy | Multi-generational relations, property queries |
 | [commonsense.scm](demo/use-cases/commonsense.scm) | Everyday | Object properties, locations, causal chains |
@@ -170,6 +179,11 @@ All scripts run with `cat <script> | nc localhost 17001`. See [demo/use-cases/RE
 | [math-reasoning.scm](demo/use-cases/math-reasoning.scm) | Math | Arithmetic truths, geometric properties |
 | [reasoning-pipeline.scm](demo/use-cases/reasoning-pipeline.scm) | Multi | Chain: taxonomy → properties → rewrite → cross-query |
 | [rewriting.scm](demo/use-cases/rewriting.scm) | Inference | BindLink-based automatic knowledge inference |
+| [chatbot-memory.scm](demo/use-cases/chatbot-memory.scm) | Conversational | Message history, user facts, temporal order |
+| [recipe-knowledge.scm](demo/use-cases/recipe-knowledge.scm) | Cooking | Recipes, ingredients, dietary categories |
+| [music-theory.scm](demo/use-cases/music-theory.scm) | Music | Notes, scales, chords, intervals |
+| [geography.scm](demo/use-cases/geography.scm) | Geography | Countries, capitals, continents, population |
+| [diagnostics.scm](demo/use-cases/diagnostics.scm) | Automotive | Multi-symptom diagnostic rules |
 
 ---
 
@@ -183,6 +197,9 @@ All scripts run with `cat <script> | nc localhost 17001`. See [demo/use-cases/RE
 | **Docker** | [Dockerfile](Dockerfile) | `docker build -t opencog-demo . && docker run ...` |
 | **Docker Compose** | [docker-compose.yml](docker-compose.yml) | `docker compose up -d` — multi-service orchestration |
 | **Start Script** | [start-cogserver.sh](start-cogserver.sh) | One-command CogServer restart |
+| **Python CLI** | [cogcli.py](cogcli.py) | `python3 cogcli.py count` — REPL commands from the shell |
+| **Load Tester** | [loadtest.py](loadtest.py) | `python3 loadtest.py --count 1000` — throughput benchmark |
+| **Config Template** | [.env.example](.env.example) | Environment variable reference |
 | **CI Pipeline** | [.github/workflows/verify.yml](.github/workflows/verify.yml) | Build + test on every push |
 
 ### Build Times

@@ -1,0 +1,31 @@
+version: 2
+updates:
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+    labels:
+      - "ci"
+      - "dependencies"
+    commit-message:
+      prefix: "ci"
+
+  - package-ecosystem: "docker"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+    labels:
+      - "docker"
+      - "dependencies"
+    commit-message:
+      prefix: "docker"
+
+  - package-ecosystem: "pip"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+    labels:
+      - "python"
+      - "dependencies"
+    commit-message:
+      prefix: "python"

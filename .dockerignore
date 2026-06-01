@@ -1,0 +1,38 @@
+# Git
+.git
+.gitignore
+.gitattributes
+
+# Secrets
+.env
+**/*.pem
+**/*.key
+
+# Tests and CI
+.github
+
+# OS artifacts
+.DS_Store
+Thumbs.db
+
+# Documentation source (only need rendered docs)
+docs/*.md
+!docs/*.md
+
+# Python
+__pycache__
+*.pyc
+*.pyo
+*.egg-info
+dist
+build
+
+# Node
+node_modules
+
+# Dev
+.vscode
+.idea
+*.swp
+*.swo
+*~

@@ -32,13 +32,13 @@
 Send a JSON object with `"command"` and `"body"` fields:
 
 ```json
-{"command": "scheme", "body": "(ConceptNode \"hello\")"}
+{"command": "scheme", "body": "(Concept \"hello\")"}
 ```
 
 The server responds with:
 
 ```json
-{"status": "ok", "result": "(ConceptNode \"hello\")\n", "type": "json"}
+{"status": "ok", "result": "(Concept \"hello\")\n", "type": "json"}
 ```
 
 ## TCP Endpoints (telnet / raw)
@@ -76,7 +76,7 @@ const ws = new WebSocket("ws://localhost:18080/json");
 ws.onopen = () => {
     ws.send(JSON.stringify({
         command: "scheme",
-        body: "(ConceptNode 'hello')"
+        body: "(Concept 'hello')"
     }));
 };
 

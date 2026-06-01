@@ -27,7 +27,7 @@ You will see the `opencog>` prompt. Type Scheme expressions directly:
 
 ```scheme
 (use-modules (opencog))
-(ConceptNode "hello")
+(Concept "hello")
 ```
 
 ## Method 3: Piped Scripts
@@ -35,7 +35,7 @@ You will see the `opencog>` prompt. Type Scheme expressions directly:
 Batch-load a file of Atomese expressions:
 
 ```bash
-cat demo/basic-knowledge.scm | nc localhost 17001
+cat demo/comprehensive-demo.scm | nc localhost 17001
 ```
 
 ## Your First Atoms
@@ -47,26 +47,26 @@ how the system may use it.
 ### Creating Nodes
 
 ```scheme
-(ConceptNode "apple")
-(ConceptNode "fruit")
-(ConceptNode "red")
+(Concept "apple")
+(Concept "fruit")
+(Concept "red")
 ```
 
 ### Creating Links
 
 ```scheme
 ;; apple IS-A fruit
-(InheritanceLink (ConceptNode "apple") (ConceptNode "fruit"))
+(Inheritance (Concept "apple") (Concept "fruit"))
 
 ;; apple HAS-PROPERTY red
-(PropertyLink (ConceptNode "apple") (ConceptNode "red"))
+(Property (Concept "apple") (Concept "red"))
 
 ;; predicate-style: likes(cat, milk)
-(EvaluationLink
-    (PredicateNode "likes")
-    (ListLink
-        (ConceptNode "cat")
-        (ConceptNode "milk")))
+(Evaluation
+    (Predicate "likes")
+    (List
+        (Concept "cat")
+        (Concept "milk")))
 ```
 
 ### Querying
@@ -75,12 +75,12 @@ how the system may use it.
 ;; Find everything that inherits from "fruit"
 (cog-execute!
     (Get
-        (InheritanceLink
-            (VariableNode "$what")
-            (ConceptNode "fruit"))))
+        (Inheritance
+            (Variable "$what")
+            (Concept "fruit"))))
 
 ;; Dump every atom in the atomspace
-(cog-execute! (Get (AnyLink (VariableNode "$x"))))
+(cog-execute! (Get (Any (Variable "$x"))))
 ```
 
 ### Numeric Evaluation
@@ -94,4 +94,4 @@ how the system may use it.
 
 - Read the [Atomese Primer](atomese-primer.md) for a deep tour of the language
 - Check the [Architecture](architecture.md) to understand how all components fit
-- Browse `examples/` in the atomspace source tree for real-world patterns
+- Try the [Demo Scripts](../README.md#demo-scripts) in this repo for hands-on examples
