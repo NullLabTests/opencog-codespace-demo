@@ -7,9 +7,11 @@
   <a href="LICENSE"><img src="https://img.shields.io/badge/License-AGPL--3.0-blue"></a>
   <a href="https://github.com/opencog/atomspace"><img src="https://img.shields.io/badge/AtomSpace-v5.0.3--stable-blueviolet"></a>
   <a href="CONTRIBUTORS.md"><img src="https://img.shields.io/badge/Contributors-80%2B-orange"></a>
+  <a href="https://github.com/NullLabTests/opencog-codespace-demo"><img src="https://img.shields.io/github/last-commit/NullLabTests/opencog-codespace-demo"></a>
   <a href="Dockerfile"><img src="https://img.shields.io/badge/Docker-ready-2496ED?logo=docker"></a>
   <a href=".github/workflows/verify.yml"><img src="https://img.shields.io/badge/CI-build%20%26%20test-success"></a>
   <a href="https://discord.gg/vxPc6sz"><img src="https://img.shields.io/badge/Discord-join-5865F2?logo=discord"></a>
+  <a href="CONTRIBUTING.md"><img src="https://img.shields.io/badge/PRs-welcome-brightgreen"></a>
 </p>
 
 ---
@@ -135,53 +137,60 @@ See [docs/architecture.md](docs/architecture.md) for the full ASCII diagram and 
 |---|---|---|
 | Getting Started | [docs/getting-started.md](docs/getting-started.md) | Three connection methods + first atoms |
 | Atomese Primer | [docs/atomese-primer.md](docs/atomese-primer.md) | Full language tour: types, links, pattern matching, truth values |
-| Architecture | [docs/architecture.md](docs/architecture.md) | In-depth architecture diagram, data flow, threading model |
-| Ecosystem Map | [docs/ecosystem.md](docs/ecosystem.md) | Full OpenCog project map (PLN, MOSES, Hyperon/MeTTa, NLP) |
+| Architecture | [docs/architecture.md](docs/architecture.md) | Full ASCII diagram, component breakdown, data flow |
+| Ecosystem Map | [docs/ecosystem.md](docs/ecosystem.md) | Project map (PLN, MOSES, Hyperon/MeTTa, NLP) + community channels |
 | Knowledge Patterns | [docs/knowledge-patterns.md](docs/knowledge-patterns.md) | 12 common KR patterns with Atomese examples |
+| Atom Types Reference | [docs/atom-types-reference.md](docs/atom-types-reference.md) | Full type catalog with hierarchy and examples |
 | Visualizer Pages | [docs/visualizer-pages.md](docs/visualizer-pages.md) | Guide to each visualizer page with screenshots |
 | Integration Examples | [docs/integrations.md](docs/integrations.md) | 6 languages: Python, JS, Go, Ruby, Rust, curl |
 | API Reference | [docs/api.md](docs/api.md) | HTTP, WebSocket, TCP endpoint documentation |
-| Vocabulary | [docs/vocabulary.md](docs/vocabulary.md) | All node types, link types, scheme functions, truth values |
+| Vocabulary | [docs/vocabulary.md](docs/vocabulary.md) | Quick reference: types, functions, truth values |
+| Glossary | [docs/glossary.md](docs/glossary.md) | Define all OpenCog terminology |
+| Best Practices | [docs/best-practices.md](docs/best-practices.md) | Naming, ontology design, query optimization |
 | Build from Source | [docs/build-from-source.md](docs/build-from-source.md) | Step-by-step build instructions for Ubuntu 24.04 |
+| FAQ | [docs/faq.md](docs/faq.md) | Frequently asked questions |
+| Getting Involved | [docs/getting-involved.md](docs/getting-involved.md) | How to contribute to upstream OpenCog
 
 ### Demo Scripts
 
-All scripts run with `cat <script> | nc localhost 17001`.
+All scripts run with `cat <script> | nc localhost 17001`. See [demo/use-cases/README.md](demo/use-cases/README.md) for details.
 
-| Script | Description |
-|---|---|
-| [demo/comprehensive-demo.scm](demo/comprehensive-demo.scm) | 10-part guided tour: taxonomy, properties, queries, rewriting, truth values, arithmetic |
-| [demo.scm](demo.scm) | Quick starter — atoms, inheritance, arithmetic, pattern matching |
-| [demo/use-cases/taxonomy.scm](demo/use-cases/taxonomy.scm) | Build and query a biological classification hierarchy |
-| [demo/use-cases/expert-system.scm](demo/use-cases/expert-system.scm) | Rule-based diagnostic system using implication links |
-| [demo/use-cases/temporal.scm](demo/use-cases/temporal.scm) | Temporal reasoning: events, times, ordering |
-| [demo/use-cases/semantic-net.scm](demo/use-cases/semantic-net.scm) | Classic Socrates syllogism in semantic network form |
-| [demo/use-cases/rewriting.scm](demo/use-cases/rewriting.scm) | Automatic inference via BindLink graph rewriting |
+| Script | Domain | Concepts |
+|---|---|---|
+| [comprehensive-demo.scm](demo/comprehensive-demo.scm) | General | 10-part guided tour: taxonomy, properties, queries, rewriting, truth values, arithmetic |
+| [demo.scm](demo.scm) | General | Quick starter — atoms, inheritance, arithmetic |
+| [taxonomy.scm](demo/use-cases/taxonomy.scm) | Biology | Inheritance hierarchy, classification queries |
+| [family-tree.scm](demo/use-cases/family-tree.scm) | Genealogy | Multi-generational relations, property queries |
+| [commonsense.scm](demo/use-cases/commonsense.scm) | Everyday | Object properties, locations, causal chains |
+| [expert-system.scm](demo/use-cases/expert-system.scm) | Medicine | Rule-based diagnosis with implication links |
+| [planning.scm](demo/use-cases/planning.scm) | Robotics | State, action preconditions, affordances |
+| [temporal.scm](demo/use-cases/temporal.scm) | Scheduling | Events, time points, ordering (Before/AtTime) |
+| [semantic-net.scm](demo/use-cases/semantic-net.scm) | Philosophy | Socrates syllogism, semantic network queries |
+| [analogies.scm](demo/use-cases/analogies.scm) | Cognition | Cross-domain analogy via SimilarityLink |
+| [math-reasoning.scm](demo/use-cases/math-reasoning.scm) | Math | Arithmetic truths, geometric properties |
+| [reasoning-pipeline.scm](demo/use-cases/reasoning-pipeline.scm) | Multi | Chain: taxonomy → properties → rewrite → cross-query |
+| [rewriting.scm](demo/use-cases/rewriting.scm) | Inference | BindLink-based automatic knowledge inference |
 
 ---
 
 ## Deployment Options
 
-### Docker
-```bash
-docker build -t opencog-demo .
-docker run -it --rm -p 17001:17001 -p 18080:18080 opencog-demo
-```
+### Quick Reference
 
-### Start / Restart
-```bash
-./start-cogserver.sh
-```
-
-### CI Pipeline
-[`.github/workflows/verify.yml`](.github/workflows/verify.yml) — builds the full stack, starts CogServer, and runs integration tests on every push.
+| Tool | File | What it does |
+|---|---|---|
+| **Makefile** | [Makefile](Makefile) | `make start`, `make stop`, `make test`, `make docker-build` |
+| **Docker** | [Dockerfile](Dockerfile) | `docker build -t opencog-demo . && docker run ...` |
+| **Docker Compose** | [docker-compose.yml](docker-compose.yml) | `docker compose up -d` — multi-service orchestration |
+| **Start Script** | [start-cogserver.sh](start-cogserver.sh) | One-command CogServer restart |
+| **CI Pipeline** | [.github/workflows/verify.yml](.github/workflows/verify.yml) | Build + test on every push |
 
 ### Build Times
 
 | Component | Time (4 cores) |
 |---|---|
 | cogutil | ~22s |
-| atomspace (384 files) | ~6m 38s |
+| atomspace (384 files + Guile bindings) | ~6m 38s |
 | atomspace-storage | ~1m 15s |
 | cogserver | ~4m 15s |
 | **Total** | **~12 minutes** |
@@ -219,6 +228,11 @@ The OpenCog AtomSpace has been in **continuous development since 2008**. This de
 3. **The ecosystem is alive** — successor project Hyperon / MeTTa is under active development at TrueAGI.
 4. **Zero-configuration exploration** — connect via telnet, browser, or script immediately.
 
+For a comprehensive overview of the OpenCog architecture and the
+theoretical framework, see the arXiv paper
+[*"OpenCog Hyperon: A Framework for AGI at the Human Level and Beyond"*](https://arxiv.org/abs/2310.18318)
+(Goertzel et al., 2023, 13 co-authors).
+
 ---
 
 ## Community
@@ -244,7 +258,19 @@ from the original Novamente Cognition Engine (2001) through OpenCog Classic
 4. Contact **Linas Vepstas** (linasvepstas@gmail.com) for developer onboarding to OpenCog Classic
 5. Explore [SingularityNET Deep Funding](https://deepfunding.ai) for AGI research grants
 
-Full contributor credits in [CONTRIBUTORS.md](CONTRIBUTORS.md).
+### Repository Standards
+
+| Standard | File |
+|---|---|
+| Contributor Guide | [CONTRIBUTING.md](CONTRIBUTING.md) |
+| Code of Conduct | [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md) |
+| Security Policy | [SECURITY.md](SECURITY.md) |
+| Troubleshooting | [TROUBLESHOOTING.md](TROUBLESHOOTING.md) |
+| FAQ | [docs/faq.md](docs/faq.md) |
+| Getting Involved | [docs/getting-involved.md](docs/getting-involved.md) |
+| Glossary | [docs/glossary.md](docs/glossary.md) |
+| Best Practices | [docs/best-practices.md](docs/best-practices.md) |
+| Full Contributor Credits | [CONTRIBUTORS.md](CONTRIBUTORS.md) |
 
 ---
 
