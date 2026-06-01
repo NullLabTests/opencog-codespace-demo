@@ -61,25 +61,17 @@ Then create your first atoms:
   <em>Live REPL session: creating atoms, building relationships, querying, and evaluating arithmetic.</em>
 </p>
 
-### Screenshots
-
-| 3D Graph Browser | Tree View | Type View |
-|---|---|---|
-| ![3D Graph](assets/visualizer.png) | ![Tree View](assets/tree-view.png) | ![Type View](assets/type-view.png) |
-| **Analytics Dashboard** | **CogServer Stats** | **WebSocket Shell** |
-| ![Analytics](assets/analytics.png) | ![Stats](assets/stats-full.png) | ![WebSocket Shell](assets/websocket-demo.png) |
-
 All visualizer pages are served at `http://localhost:18080/visualizer/`.
 
-| Page | URL | Purpose |
-|---|---|---|
-| 3D Graph Browser | `/visualizer/` | Click, drag, zoom — inspect atoms and links |
-| Tree View | `/visualizer/tree-view.html` | Hierarchical layout for taxonomies |
-| Type View | `/visualizer/type-view.html` | Atoms grouped by type |
-| Analytics | `/visualizer/analytics.html` | Real-time stats (counts, degrees, density, type pie) |
-| WebSocket Shell | `/websockets/demo.html` | Browser-based interactive REPL |
-| JSON Test | `/websockets/json-test.html` | Raw JSON-over-WebSocket developer tool |
-| Server Status | `/stats` | Loaded modules, uptime, connections |
+| Page | URL | Purpose | Preview |
+|---|---|---|---|
+| 3D Graph Browser | `/visualizer/` | 3D knowledge graph — click, drag, zoom | ![3D](assets/visualizer.png) |
+| Tree View | `/visualizer/tree-view.html` | Hierarchical layout for taxonomy inspection | ![Tree](assets/tree-view.png) |
+| Type View | `/visualizer/type-view.html` | Atoms grouped by type | ![Type](assets/type-view.png) |
+| Analytics | `/visualizer/analytics.html` | Real-time stats: counts, degrees, type pie | ![Analytics](assets/analytics.png) |
+| WebSocket Shell | `/websockets/demo.html` | Browser-based interactive REPL | ![WS Shell](assets/websocket-demo.png) |
+| JSON Test | `/websockets/json-test.html` | Raw JSON-over-WebSocket developer tool | ![JSON](assets/json-test.png) |
+| Server Status | `/stats` | Loaded modules, uptime, connections | ![Stats](assets/stats-full.png) |
 
 ---
 
