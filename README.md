@@ -254,6 +254,33 @@ theoretical framework, see the arXiv paper
 
 ---
 
+## Citing This Work
+
+If you use this repository in research or education, please cite:
+
+```bibtex
+@misc{opencog-demo-2026,
+  author = {OpenCog Contributors},
+  title = {OpenCog AtomSpace — Live Demo Stack},
+  year = {2026},
+  publisher = {GitHub},
+  url = {https://github.com/NullLabTests/opencog-codespace-demo}
+}
+```
+
+For the OpenCog framework itself:
+
+```bibtex
+@article{goertzel2023opencog,
+  title={OpenCog Hyperon: A Framework for AGI at the Human Level and Beyond},
+  author={Goertzel, Ben and others},
+  journal={arXiv preprint arXiv:2310.18318},
+  year={2023}
+}
+```
+
+---
+
 ## Community
 
 The OpenCog project has been built by **80+ contributors** over **20+ years**,
@@ -289,13 +316,16 @@ from the original Novamente Cognition Engine (2001) through OpenCog Classic
 | Getting Involved | [docs/getting-involved.md](docs/getting-involved.md) |
 | Glossary | [docs/glossary.md](docs/glossary.md) |
 | Best Practices | [docs/best-practices.md](docs/best-practices.md) |
+| Roadmap | [ROADMAP.md](ROADMAP.md) |
+| Support | [SUPPORT.md](SUPPORT.md) |
+| Changelog | [CHANGELOG.md](CHANGELOG.md) |
 | Full Contributor Credits | [CONTRIBUTORS.md](CONTRIBUTORS.md) |
 
 ---
 
 ## License
 
-**AGPL-3.0** — see [LICENSE](LICENSE). Upstream components are AGPL-3.0 or LGPL-3.0.
+**Apache 2.0** — see [LICENSE](LICENSE). Upstream components (AtomSpace, CogServer, cogutil) remain AGPL-3.0 or LGPL-3.0.
 
 ---
 
