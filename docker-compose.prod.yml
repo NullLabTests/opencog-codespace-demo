@@ -1,0 +1,28 @@
+services:
+  cogserver:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: opencog-demo
+    container_name: opencog-cogserver
+    ports:
+      - "17001:17001"
+      - "18080:18080"
+      - "18888:18888"
+    volumes:
+      - cogserver-data:/tmp/atomspace-data
+      - ./demo:/usr/local/share/opencog/demo:ro
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "/usr/local/bin/docker-healthcheck.sh"]
+      interval: 15s
+      timeout: 5s
+      retries: 3
+      start_period: 30s
+    environment:
+      - COGSERVER_REPL_PORT=17001
+      - COGSERVER_WEB_PORT=18080
+      - COGSERVER_MCP_PORT=18888
+
+volumes:
+  cogserver-data:

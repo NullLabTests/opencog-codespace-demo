@@ -1,3 +1,8 @@
+;; OpenCog AtomSpace Demo
+;; SPDX-License-Identifier: Apache-2.0
+;; SPDX-FileCopyrightText: 2026 Contributors to OpenCog
+
+
 ;; OpenCog AtomSpace — Advanced Diagnostic Reasoning
 ;; Multi-step diagnostic reasoning with certainty factors
 ;;

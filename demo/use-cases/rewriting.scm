@@ -1,3 +1,8 @@
+;; OpenCog AtomSpace Demo
+;; SPDX-License-Identifier: Apache-2.0
+;; SPDX-FileCopyrightText: 2026 Contributors to OpenCog
+
+
 ;; OpenCog AtomSpace — Graph Rewriting Demo
 ;; Automatic inference via BindLink rewrite rules
 ;;

@@ -1,3 +1,8 @@
+;; OpenCog AtomSpace Demo
+;; SPDX-License-Identifier: Apache-2.0
+;; SPDX-FileCopyrightText: 2026 Contributors to OpenCog
+
+
 ;; ── Sensor Integration Demo ──
 ;; Models sensors, readings, and threshold alerts in Atomese
 ;; Usage: cat demo/use-cases/sensor-integration.scm | nc localhost 17001

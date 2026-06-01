@@ -1,4 +1,16 @@
 #!/bin/bash
+
+# OpenCog AtomSpace Demo
+# SPDX-License-Identifier: Apache-2.0
+# SPDX-FileCopyrightText: 2026 Contributors to OpenCog
+
+
+
+# OpenCog AtomSpace Demo
+# SPDX-License-Identifier: Apache-2.0
+# SPDX-FileCopyrightText: 2026 Contributors to OpenCog
+
+
 # Docker healthcheck — verifies CogServer is responding
 set -euo pipefail
 

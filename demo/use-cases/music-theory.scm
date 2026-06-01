@@ -1,3 +1,8 @@
+;; OpenCog AtomSpace Demo
+;; SPDX-License-Identifier: Apache-2.0
+;; SPDX-FileCopyrightText: 2026 Contributors to OpenCog
+
+
 ;; OpenCog AtomSpace — Music Theory Knowledge Base
 ;; Notes, scales, chords, and their relationships
 ;;

@@ -1,3 +1,8 @@
+;; OpenCog AtomSpace Demo
+;; SPDX-License-Identifier: Apache-2.0
+;; SPDX-FileCopyrightText: 2026 Contributors to OpenCog
+
+
 ;; ── CogServer Initialization Script ──
 ;; Load this to set up modules and defaults on startup
 ;; Usage: cat init-cogserver.scm | nc localhost 17001

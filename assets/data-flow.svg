@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 350" font-family="monospace">
+  <rect width="700" height="350" fill="#f8f9fa" rx="8"/>
+  <text x="350" y="30" text-anchor="middle" font-size="14" font-weight="bold" fill="#333">AtomSpace Data Flow</text>
+
+  <!-- Input sources -->
+  <rect x="20" y="55" width="130" height="40" rx="4" fill="#cce5ff" stroke="#4a90d9" stroke-width="1.5"/>
+  <text x="85" y="80" text-anchor="middle" font-size="10" fill="#004085">Telnet / TCP</text>
+
+  <rect x="20" y="105" width="130" height="40" rx="4" fill="#cce5ff" stroke="#4a90d9" stroke-width="1.5"/>
+  <text x="85" y="130" text-anchor="middle" font-size="10" fill="#004085">WebSocket</text>
+
+  <rect x="20" y="155" width="130" height="40" rx="4" fill="#cce5ff" stroke="#4a90d9" stroke-width="1.5"/>
+  <text x="85" y="180" text-anchor="middle" font-size="10" fill="#004085">HTTP / REST</text>
+
+  <!-- Arrow from inputs -->
+  <line x1="150" y1="75" x2="240" y2="100" stroke="#666" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <line x1="150" y1="125" x2="240" y2="100" stroke="#666" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <line x1="150" y1="175" x2="240" y2="100" stroke="#666" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <!-- CogServer -->
+  <rect x="250" y="70" width="180" height="60" rx="6" fill="#fff3cd" stroke="#e6a817" stroke-width="2"/>
+  <text x="340" y="92" text-anchor="middle" font-size="11" font-weight="bold" fill="#856404">CogServer</text>
+  <text x="340" y="110" text-anchor="middle" font-size="9" fill="#856404">Shells · Router · Modules</text>
+
+  <!-- Arrow cogserver → atomspace -->
+  <line x1="340" y1="130" x2="340" y2="185" stroke="#666" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- AtomSpace Core -->
+  <rect x="70" y="190" width="250" height="70" rx="6" fill="#d4edda" stroke="#28a745" stroke-width="2"/>
+  <text x="195" y="212" text-anchor="middle" font-size="11" font-weight="bold" fill="#155724">AtomSpace Core</text>
+  <text x="195" y="228" text-anchor="middle" font-size="9" fill="#155724">Atom Table · Type Index</text>
+  <text x="195" y="242" text-anchor="middle" font-size="9" fill="#155724">Pattern Matcher · Values</text>
+
+  <!-- Query Engine -->
+  <rect x="350" y="190" width="200" height="70" rx="6" fill="#d4edda" stroke="#28a745" stroke-width="2"/>
+  <text x="450" y="212" text-anchor="middle" font-size="11" font-weight="bold" fill="#155724">Query Engine</text>
+  <text x="450" y="228" text-anchor="middle" font-size="9" fill="#155724">Get · Bind · Meet</text>
+  <text x="450" y="242" text-anchor="middle" font-size="9" fill="#155724">Satisfaction · Rewriting</text>
+
+  <!-- Arrow between core and query -->
+  <line x1="320" y1="225" x2="350" y2="225" stroke="#28a745" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <!-- Storage -->
+  <rect x="250" y="280" width="200" height="50" rx="6" fill="#f8d7da" stroke="#dc3545" stroke-width="1.5"/>
+  <text x="350" y="302" text-anchor="middle" font-size="10" font-weight="bold" fill="#721c24">Storage Backends</text>
+  <text x="350" y="318" text-anchor="middle" font-size="9" fill="#721c24">RocksDB · PostgreSQL · CogStorage</text>
+
+  <!-- Arrow to storage -->
+  <line x1="250" y1="260" x2="300" y2="280" stroke="#666" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <line x1="300" y1="260" x2="350" y2="280" stroke="#666" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <!-- Outputs -->
+  <rect x="570" y="55" width="110" height="40" rx="4" fill="#e2d9f3" stroke="#6f42c1" stroke-width="1.5"/>
+  <text x="625" y="80" text-anchor="middle" font-size="10" fill="#6f42c1">3D Visualizer</text>
+
+  <rect x="570" y="105" width="110" height="40" rx="4" fill="#e2d9f3" stroke="#6f42c1" stroke-width="1.5"/>
+  <text x="625" y="130" text-anchor="middle" font-size="10" fill="#6f42c1">JSON Response</text>
+
+  <rect x="570" y="155" width="110" height="40" rx="4" fill="#e2d9f3" stroke="#6f42c1" stroke-width="1.5"/>
+  <text x="625" y="180" text-anchor="middle" font-size="10" fill="#6f42c1">Stats Dashboard</text>
+
+  <!-- Arrow to outputs -->
+  <line x1="430" y1="100" x2="570" y2="75" stroke="#666" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <line x1="430" y1="100" x2="570" y2="125" stroke="#666" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <line x1="430" y1="100" x2="570" y2="175" stroke="#666" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <defs>
+    <marker id="arrow" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#666"/>
+    </marker>
+  </defs>
+</svg>

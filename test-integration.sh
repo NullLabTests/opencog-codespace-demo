@@ -1,4 +1,16 @@
 #!/bin/bash
+
+# OpenCog AtomSpace Demo
+# SPDX-License-Identifier: Apache-2.0
+# SPDX-FileCopyrightText: 2026 Contributors to OpenCog
+
+
+
+# OpenCog AtomSpace Demo
+# SPDX-License-Identifier: Apache-2.0
+# SPDX-FileCopyrightText: 2026 Contributors to OpenCog
+
+
 # Integration test — verifies CogServer responds on all endpoints
 set -euo pipefail
 

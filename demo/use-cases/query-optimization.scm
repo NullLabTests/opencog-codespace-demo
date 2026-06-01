@@ -1,3 +1,8 @@
+;; OpenCog AtomSpace Demo
+;; SPDX-License-Identifier: Apache-2.0
+;; SPDX-FileCopyrightText: 2026 Contributors to OpenCog
+
+
 ;; ── Query Optimization Demo ──
 ;; Demonstrates efficient query patterns vs. slow ones
 ;; Usage: cat demo/use-cases/query-optimization.scm | nc localhost 17001

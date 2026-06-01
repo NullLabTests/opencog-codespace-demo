@@ -1,3 +1,8 @@
+;; OpenCog AtomSpace Demo
+;; SPDX-License-Identifier: Apache-2.0
+;; SPDX-FileCopyrightText: 2026 Contributors to OpenCog
+
+
 ;; ── AtomSpace Benchmark Suite ──
 ;; Measures creation throughput and query performance
 ;; Usage: cat benchmark.scm | nc localhost 17001

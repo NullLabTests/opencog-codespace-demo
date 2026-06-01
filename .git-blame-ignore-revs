@@ -1,0 +1,5 @@
+# Git blame ignore file
+# Add commit SHAs here to exclude formatting-only changes from git blame
+# Format: <full-commit-hash>
+# Example:
+# abc123def456abc123def456abc123def456abc1

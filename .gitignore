@@ -1,5 +1,40 @@
+# Python
+*.pyc
+__pycache__/
+*.egg-info/
+dist/
+build/
+*.whl
+
+# Editors
+*.swp
+*.swo
+*~
+.vscode/
+.idea/
+*.iml
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
 *.log
+/tmp/cogserver.log
+
+# Secrets
+.env
+**/*.pem
+**/*.key
+
+# CogServer
+cogserver-data/
+
+# Node
+node_modules/
+
+# Default block *.png, then allow specific
 *.png
 !assets/*.png
 !assets/*.gif
-node_modules/
+!assets/*.svg

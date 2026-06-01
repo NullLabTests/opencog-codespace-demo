@@ -1,3 +1,8 @@
+# OpenCog AtomSpace Demo
+# SPDX-License-Identifier: Apache-2.0
+# SPDX-FileCopyrightText: 2026 Contributors to OpenCog
+
+
 #!/usr/bin/env python3
 """cogcli — Command-line interface for OpenCog CogServer.
 

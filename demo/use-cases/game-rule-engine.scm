@@ -1,3 +1,8 @@
+;; OpenCog AtomSpace Demo
+;; SPDX-License-Identifier: Apache-2.0
+;; SPDX-FileCopyrightText: 2026 Contributors to OpenCog
+
+
 ;; ── Game Rule Engine Demo ──
 ;; Demonstrates rule-based game logic using ImplicationLinks
 ;; Usage: cat demo/use-cases/game-rule-engine.scm | nc localhost 17001

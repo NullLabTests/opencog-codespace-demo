@@ -1,0 +1,14 @@
+# Default owners for the entire repo
+* @NullLabTests
+
+# Documentation changes
+docs/*.md @NullLabTests
+
+# CI/CD changes
+.github/ @NullLabTests
+
+# Python tools
+*.py @NullLabTests
+
+# Demo scripts
+demo/*.scm @NullLabTests

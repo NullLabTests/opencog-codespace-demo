@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>CogServer Performance Dashboard</title>
+  <style>
+    body { font-family: monospace; max-width: 900px; margin: 2em auto; padding: 0 1em; background: #1a1a2e; color: #e0e0e0; }
+    h1 { color: #4fc3f7; }
+    .card { background: #16213e; border: 1px solid #333; border-radius: 8px; padding: 1em; margin: 1em 0; }
+    .card h3 { margin-top: 0; color: #81c784; }
+    .stat { display: inline-block; margin: 1em; text-align: center; }
+    .stat .value { font-size: 2em; font-weight: bold; color: #4fc3f7; }
+    .stat .label { font-size: 0.8em; color: #999; }
+    .bar { height: 20px; background: #333; border-radius: 10px; margin: 0.5em 0; overflow: hidden; }
+    .bar-fill { height: 100%; background: linear-gradient(90deg, #4fc3f7, #81c784); border-radius: 10px; transition: width 1s; }
+    .info { color: #666; font-size: 0.9em; text-align: center; margin-top: 2em; }
+    a { color: #4fc3f7; }
+  </style>
+</head>
+<body>
+  <h1>CogServer Performance Dashboard</h1>
+
+  <div class="card">
+    <h3>Atom Creation Throughput</h3>
+    <div class="stat"><div class="value" id="create-rate">—</div><div class="label">atoms/s</div></div>
+    <div class="stat"><div class="value" id="total-atoms">—</div><div class="label">total atoms</div></div>
+    <div class="stat"><div class="value" id="query-rate">—</div><div class="label">queries/s</div></div>
+  </div>
+
+  <div class="card">
+    <h3>Type Distribution</h3>
+    <div id="type-bars"></div>
+  </div>
+
+  <div class="card">
+    <h3>Memory</h3>
+    <div class="stat"><div class="value" id="mem-estimate">—</div><div class="label">estimated MB</div></div>
+  </div>
+
+  <div class="info">
+    <p>Data updates on page load. Run <code>benchmark.scm</code> via the REPL to populate metrics.</p>
+    <p><a href="../docs/performance-guide.md">Performance Guide</a> — <a href="../benchmark.scm">Benchmark Script</a></p>
+  </div>
+
+  <script>
+    async function fetchStats() {
+      try {
+        const resp = await fetch('/stats');
+        const text = await resp.text();
+        document.getElementById('total-atoms').textContent = text.match(/\d+/)?.[0] || '?';
+      } catch(e) {
+        console.log('Stats unavailable:', e);
+      }
+    }
+
+    // Generate mock type distribution bars for visual demo
+    const types = ['ConceptNode', 'InheritanceLink', 'PredicateNode', 'VariableNode', 'EvaluationLink', 'NumberNode', 'ListLink'];
+    const counts = [145, 89, 34, 28, 22, 15, 12];
+    const maxCount = Math.max(...counts);
+    const bars = document.getElementById('type-bars');
+    types.forEach((t, i) => {
+      const pct = (counts[i] / maxCount * 100).toFixed(0);
+      bars.innerHTML += `<div style="margin:0.3em 0"><span style="display:inline-block;width:150px">${t}</span><div class="bar" style="display:inline-block;width:300px"><div class="bar-fill" style="width:${pct}%"></div></div><span style="margin-left:0.5em">${counts[i]}</span></div>`;
+    });
+
+    fetchStats();
+  </script>
+</body>
+</html>
