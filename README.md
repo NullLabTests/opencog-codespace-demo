@@ -4,12 +4,13 @@
 
 <p align="center">
   <a href="https://opencog.org"><img src="https://img.shields.io/badge/OpenCog-AtomSpace-2ea44f"></a>
-  <a href="LICENSE"><img src="https://img.shields.io/badge/License-AGPL--3.0-blue"></a>
+  <a href="LICENSE"><img src="https://img.shields.io/badge/License-Apache%202.0-blue"></a>
   <a href="https://github.com/opencog/atomspace"><img src="https://img.shields.io/badge/AtomSpace-v5.0.3--stable-blueviolet"></a>
   <a href="CONTRIBUTORS.md"><img src="https://img.shields.io/badge/Contributors-80%2B-orange"></a>
   <a href="https://github.com/NullLabTests/opencog-codespace-demo"><img src="https://img.shields.io/github/last-commit/NullLabTests/opencog-codespace-demo"></a>
   <a href="Dockerfile"><img src="https://img.shields.io/badge/Docker-ready-2496ED?logo=docker"></a>
   <a href=".github/workflows/verify.yml"><img src="https://img.shields.io/badge/CI-build%20%26%20test-success"></a>
+  <a href=".github/workflows/codeql.yml"><img src="https://img.shields.io/badge/CodeQL-passing-success"></a>
   <a href="https://discord.gg/vxPc6sz"><img src="https://img.shields.io/badge/Discord-join-5865F2?logo=discord"></a>
   <a href="CONTRIBUTING.md"><img src="https://img.shields.io/badge/PRs-welcome-brightgreen"></a>
 </p>
@@ -110,12 +111,7 @@ Full examples for **Go, Ruby, Rust** in [docs/integrations.md](docs/integrations
 
 ## Architecture
 
-```
-Browser ──ws──► CogServer (:18080) ──► AtomSpace Core ──► Storage Backends
-                    │                       │
-               ┌────┴────┐            ┌─────┴──────┐
-           Telnet:17001  MCP:18888  Query Engine   Atom Table
-```
+![Architecture Diagram](assets/architecture.svg)
 
 | Layer | Component | Role |
 |---|---|---|
@@ -200,6 +196,11 @@ All 23 scripts run with `cat <script> | nc localhost 17001`. See [demo/use-cases
 | **Python CLI** | [cogcli.py](cogcli.py) | `python3 cogcli.py count` — REPL commands from the shell |
 | **Load Tester** | [loadtest.py](loadtest.py) | `python3 loadtest.py --count 1000` — throughput benchmark |
 | **Config Template** | [.env.example](.env.example) | Environment variable reference |
+| **Init Script** | [init-cogserver.scm](init-cogserver.scm) | Initialize CogServer with modules and anchors |
+| **Benchmark** | [benchmark.scm](benchmark.scm) | Atom creation + query throughput measurement |
+| **REPL Helper** | [repl.sh](repl.sh) | `./repl.sh` — quick telnet with rlwrap |
+| **Health Check** | [docker-healthcheck.sh](docker-healthcheck.sh) | Docker container health probe |
+| **Integration Test** | [test-integration.sh](test-integration.sh) | Full endpoint smoke test |
 | **CI Pipeline** | [.github/workflows/verify.yml](.github/workflows/verify.yml) | Build + test on every push |
 
 ### Build Times

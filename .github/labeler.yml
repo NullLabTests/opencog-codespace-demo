@@ -1,0 +1,29 @@
+# Auto-label PRs based on changed files
+
+documentation:
+  - changed-files:
+      - any-glob-to-any-file: ['docs/**/*.md', 'README.md']
+
+demo:
+  - changed-files:
+      - any-glob-to-any-file: ['demo/**/*.scm', 'demo.scm', 'demo/**/*']
+
+docker:
+  - changed-files:
+      - any-glob-to-any-file: ['Dockerfile', 'docker-compose.yml', '.dockerignore']
+
+ci:
+  - changed-files:
+      - any-glob-to-any-file: ['.github/**/*']
+
+python:
+  - changed-files:
+      - any-glob-to-any-file: ['*.py', 'pyproject.toml']
+
+config:
+  - changed-files:
+      - any-glob-to-any-file: ['.editorconfig', '.gitignore', '.gitattributes', '.pre-commit-config.yaml']
+
+assets:
+  - changed-files:
+      - any-glob-to-any-file: ['assets/**/*']

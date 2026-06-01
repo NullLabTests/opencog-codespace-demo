@@ -66,9 +66,9 @@ jobs:
     
     - name: Test Scheme REPL
       run: |
-        result=$(echo '(use-modules (opencog)) (ConceptNode "test") (cog-count-atoms)' | nc -w 5 localhost 17001)
+        result=$(echo '(use-modules (opencog)) (Concept "test") (cog-count-atoms)' | nc -w 5 localhost 17001)
         echo "$result"
-        echo "$result" | grep -q "ConceptNode" && echo "REPL test PASSED" || (echo "REPL test FAILED" && exit 1)
+        echo "$result" | grep -q "Concept" && echo "REPL test PASSED" || (echo "REPL test FAILED" && exit 1)
     
     - name: Test WebSocket
       run: |
@@ -80,7 +80,12 @@ jobs:
         curl -s http://localhost:18080/stats | head -20
         echo "HTTP test PASSED"
     
-    - name: Verify demo scripts
+    - name: Run comprehensive demo
       run: |
-        cat /usr/local/share/opencog/demo/demo.scm | nc -w 5 localhost 17001 2>/dev/null | tail -5
-        echo "Demo script test completed"
+        cat demo/comprehensive-demo.scm | nc -w 15 localhost 17001 2>/dev/null | tail -10
+        echo "Comprehensive demo completed"
+
+    - name: Run benchmark suite
+      run: |
+        cat benchmark.scm | nc -w 60 localhost 17001 2>/dev/null | tail -5
+        echo "Benchmark completed"

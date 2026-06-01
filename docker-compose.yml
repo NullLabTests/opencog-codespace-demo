@@ -11,10 +11,15 @@ services:
       - cogserver-data:/tmp/atomspace-data
     restart: unless-stopped
     healthcheck:
-      test: ["CMD", "nc", "-z", "localhost", "17001"]
-      interval: 10s
+      test: ["CMD", "/usr/local/bin/docker-healthcheck.sh"]
+      interval: 15s
       timeout: 5s
       retries: 3
+      start_period: 30s
+    environment:
+      - COGSERVER_REPL_PORT=17001
+      - COGSERVER_WEB_PORT=18080
+      - COGSERVER_MCP_PORT=18888
 
 volumes:
   cogserver-data:
