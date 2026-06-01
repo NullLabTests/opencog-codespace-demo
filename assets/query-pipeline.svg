@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400" font-family="monospace">
+  <rect width="600" height="400" fill="#f8f9fa" rx="8"/>
+  <text x="300" y="30" text-anchor="middle" font-size="14" font-weight="bold" fill="#333">Query Pipeline</text>
+
+  <!-- Input -->
+  <rect x="200" y="50" width="200" height="40" rx="6" fill="#cce5ff" stroke="#4a90d9" stroke-width="1.5"/>
+  <text x="300" y="75" text-anchor="middle" font-size="11" fill="#004085">Query Expression (Get/Bind/Meet)</text>
+  <line x1="300" y1="90" x2="300" y2="120" stroke="#666" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <!-- Step 1: Parse -->
+  <rect x="150" y="125" width="300" height="40" rx="6" fill="#fff3cd" stroke="#e6a817" stroke-width="1.5"/>
+  <text x="300" y="150" text-anchor="middle" font-size="11" font-weight="bold" fill="#856404">1. Parse & Validate</text>
+  <line x1="300" y1="165" x2="300" y2="195" stroke="#666" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <!-- Step 2: Type Check -->
+  <rect x="150" y="200" width="300" height="40" rx="6" fill="#fff3cd" stroke="#e6a817" stroke-width="1.5"/>
+  <text x="300" y="225" text-anchor="middle" font-size="11" font-weight="bold" fill="#856404">2. Type Check & Index Lookup</text>
+  <line x1="300" y1="240" x2="300" y2="270" stroke="#666" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <!-- Branch: Atom Table -->
+  <rect x="30" y="275" width="250" height="50" rx="6" fill="#d4edda" stroke="#28a745" stroke-width="1.5"/>
+  <text x="155" y="297" text-anchor="middle" font-size="10" font-weight="bold" fill="#155724">3. Atom Table Scan</text>
+  <text x="155" y="315" text-anchor="middle" font-size="9" fill="#155724">In-memory hash map traversal</text>
+  <line x1="200" y1="240" x2="155" y2="275" stroke="#666" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <!-- Branch: Pattern Matcher -->
+  <rect x="320" y="275" width="250" height="50" rx="6" fill="#d4edda" stroke="#28a745" stroke-width="1.5"/>
+  <text x="445" y="297" text-anchor="middle" font-size="10" font-weight="bold" fill="#155724">3. Pattern Matcher</text>
+  <text x="445" y="315" text-anchor="middle" font-size="9" fill="#155724">Subgraph isomorphism search</text>
+  <line x1="400" y1="240" x2="445" y2="275" stroke="#666" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <!-- Merge -->
+  <line x1="155" y1="325" x2="300" y2="355" stroke="#666" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <line x1="445" y1="325" x2="300" y2="355" stroke="#666" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <!-- Output -->
+  <rect x="150" y="350" width="300" height="40" rx="6" fill="#e2d9f3" stroke="#6f42c1" stroke-width="1.5"/>
+  <text x="300" y="370" text-anchor="middle" font-size="10" font-weight="bold" fill="#6f42c1">4. Result Set</text>
+  <text x="300" y="383" text-anchor="middle" font-size="9" fill="#6f42c1">Matching atoms → Scheme value / JSON</text>
+
+  <defs>
+    <marker id="arrow" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#666"/>
+    </marker>
+  </defs>
+</svg>

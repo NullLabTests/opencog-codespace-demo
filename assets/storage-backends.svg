@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 250" font-family="monospace">
+  <rect width="600" height="250" fill="#f8f9fa" rx="8"/>
+  <text x="300" y="30" text-anchor="middle" font-size="14" font-weight="bold" fill="#333">Storage Backends</text>
+
+  <!-- AtomSpace -->
+  <rect x="200" y="50" width="200" height="45" rx="6" fill="#d4edda" stroke="#28a745" stroke-width="2"/>
+  <text x="300" y="70" text-anchor="middle" font-size="11" font-weight="bold" fill="#155724">AtomSpace Core</text>
+  <text x="300" y="85" text-anchor="middle" font-size="9" fill="#155724">In-memory hypergraph</text>
+
+  <!-- Arrows down -->
+  <line x1="130" y1="95" x2="80" y2="140" stroke="#666" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <line x1="300" y1="95" x2="300" y2="140" stroke="#666" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <line x1="470" y1="95" x2="520" y2="140" stroke="#666" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <!-- RocksDB -->
+  <rect x="10" y="145" width="140" height="45" rx="6" fill="#f8d7da" stroke="#dc3545" stroke-width="1.5"/>
+  <text x="80" y="165" text-anchor="middle" font-size="10" font-weight="bold" fill="#721c24">RocksDB</text>
+  <text x="80" y="180" text-anchor="middle" font-size="8" fill="#721c24">Embedded LSM-tree</text>
+
+  <rect x="10" y="195" width="140" height="40" rx="4" fill="#eee" stroke="#ccc" stroke-width="1"/>
+  <text x="80" y="212" text-anchor="middle" font-size="8" fill="#666">Best for: local persistence</text>
+  <text x="80" y="225" text-anchor="middle" font-size="8" fill="#666">Fast reads/writes</text>
+
+  <!-- PostgreSQL -->
+  <rect x="230" y="145" width="140" height="45" rx="6" fill="#f8d7da" stroke="#dc3545" stroke-width="1.5"/>
+  <text x="300" y="165" text-anchor="middle" font-size="10" font-weight="bold" fill="#721c24">PostgreSQL</text>
+  <text x="300" y="180" text-anchor="middle" font-size="8" fill="#721c24">Network RDBMS</text>
+
+  <rect x="230" y="195" width="140" height="40" rx="4" fill="#eee" stroke="#ccc" stroke-width="1"/>
+  <text x="300" y="212" text-anchor="middle" font-size="8" fill="#666">Best for: multi-client</text>
+  <text x="300" y="225" text-anchor="middle" font-size="8" fill="#666">Remote / concurrent</text>
+
+  <!-- In-Memory -->
+  <rect x="450" y="145" width="140" height="45" rx="6" fill="#f8d7da" stroke="#dc3545" stroke-width="1.5"/>
+  <text x="520" y="165" text-anchor="middle" font-size="10" font-weight="bold" fill="#721c24">In-Memory</text>
+  <text x="520" y="180" text-anchor="middle" font-size="8" fill="#721c24">Default (no disk)</text>
+
+  <rect x="450" y="195" width="140" height="40" rx="4" fill="#eee" stroke="#ccc" stroke-width="1"/>
+  <text x="520" y="212" text-anchor="middle" font-size="8" fill="#666">Best for: development</text>
+  <text x="520" y="225" text-anchor="middle" font-size="8" fill="#666">Fastest, ephemeral</text>
+
+  <defs>
+    <marker id="arrow" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#666"/>
+    </marker>
+  </defs>
+</svg>
