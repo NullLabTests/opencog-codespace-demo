@@ -1,0 +1,20 @@
+services:
+  cogserver:
+    build: .
+    image: opencog-demo
+    container_name: opencog-cogserver
+    ports:
+      - "17001:17001"
+      - "18080:18080"
+      - "18888:18888"
+    volumes:
+      - cogserver-data:/tmp/atomspace-data
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "nc", "-z", "localhost", "17001"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+
+volumes:
+  cogserver-data:
