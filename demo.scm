@@ -1,40 +1,37 @@
-;;;
-;;; OpenCog AtomSpace Demo Script
-;;; Run with: cat demo.scm | nc localhost 17001
-;;; Or paste into the WebSocket Shell at /websockets/demo.html
-;;;
+;; ============================================================
+;; OpenCog AtomSpace — Quick Demo
+;; ============================================================
+;; This script creates atoms, builds relationships, runs queries,
+;; and evaluates arithmetic — everything you need to verify that
+;; the AtomSpace is alive and working.
+;;
+;; Usage:
+;;   cat demo.scm | nc localhost 17001
+;;   or paste into /websockets/demo.html
+;; ============================================================
 
 (use-modules (opencog))
 
-; --- 1. Basic Atoms ---
 (display "=== Creating Atoms ===\n")
-
 (ConceptNode "hello-world")
 (ConceptNode "opencog")
 (ConceptNode "AGI")
 
-; --- 2. Relationships ---
-(display "=== Creating Relationships ===\n")
-
+(display "\n=== Creating Relationships ===\n")
 (InheritanceLink (ConceptNode "cat") (ConceptNode "animal"))
 (InheritanceLink (ConceptNode "dog") (ConceptNode "animal"))
 (InheritanceLink (ConceptNode "animal") (ConceptNode "living-thing"))
 
-; --- 3. Arithmetic ---
-(display "=== Arithmetic ===\n")
+(display "\n=== Arithmetic Evaluation ===\n")
 (cog-evaluate! (Plus (Number 1) (Number 2)))
 (cog-evaluate! (Times (Number 6) (Number 7)))
-
-; --- 4. Evaluation ---
-(display "=== Evaluation ===\n")
 (cog-evaluate! (GreaterThan (Number 10) (Number 5)))
 
-; --- 5. Query ---
-(display "=== Pattern Matching ===\n")
+(display "\n=== Pattern Matching ===\n")
+(display "All children of 'animal':\n")
 (cog-execute! (Get (InheritanceLink (VariableNode "$X") (ConceptNode "animal"))))
 
-; --- 6. Count ---
-(display "=== Atom Count ===\n")
-(cog-count-atoms 'ConceptNode)
+(display "\n=== Atom Count ===\n")
+(display (cog-count-atoms))
 
-(display "\nDone! The AtomSpace is alive.\n")
+(display "\n\nDone! The AtomSpace is alive.\n")
