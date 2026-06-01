@@ -8,7 +8,7 @@
 #   docker run -it --rm -p 17001:17001 -p 18080:18080 opencog-demo
 
 # ── Stage 1: Build ──
-FROM ubuntu:24.04 AS builder
+FROM ubuntu:26.04 AS builder
 
 ENV DEBIAN_FRONTEND=noninteractive
 ENV CC=gcc-14 CXX=g++-14
@@ -52,7 +52,7 @@ RUN git clone --depth 1 https://github.com/opencog/atomspace-viz.git && \
     cp -r atomspace-viz/* /usr/local/share/cogserver/visualizer/
 
 # ── Stage 2: Runtime ──
-FROM ubuntu:24.04
+FROM ubuntu:26.04
 
 ENV DEBIAN_FRONTEND=noninteractive
 
