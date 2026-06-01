@@ -1,0 +1,11 @@
+blank_issues_enabled: false
+contact_links:
+  - name: OpenCog Discord
+    url: https://discord.gg/vxPc6sz
+    about: Ask questions, discuss ideas, get help
+  - name: OpenCog Wiki
+    url: https://wiki.opencog.org
+    about: Comprehensive documentation and tutorials
+  - name: OpenCog GitHub
+    url: https://github.com/opencog
+    about: Upstream OpenCog repositories

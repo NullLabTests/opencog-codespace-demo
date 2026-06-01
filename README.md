@@ -150,6 +150,7 @@ See [docs/architecture.md](docs/architecture.md) for the full ASCII diagram and 
 | Performance Guide | [docs/performance-guide.md](docs/performance-guide.md) | Throughput, query optimization, memory |
 | Migration Guide | [docs/migration-guide.md](docs/migration-guide.md) | Classic → Hyperon / MeTTa |
 | History | [docs/history.md](docs/history.md) | OpenCog timeline 2001–present |
+| Remote Tunneling | [docs/tunneling.md](docs/tunneling.md) | SSH/SOCKS proxy for remote access |
 
 ### Demo Scripts
 

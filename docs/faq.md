@@ -12,7 +12,7 @@ creating a metagraph.
 No. This repo demonstrates **OpenCog Classic** (the original C++ stack).
 **Hyperon / MeTTa** is the successor architecture under active development
 at TrueAGI. Both projects share the same lineage and vision. See
-[docs/ecosystem.md](docs/ecosystem.md) for the full map.
+[ecosystem.md](ecosystem.md) for the full map.
 
 ### Is the AtomSpace production-ready?
 Yes. It has been in development since 2008, is actively maintained by
@@ -30,7 +30,7 @@ Three ways:
 ### What can I do with it?
 Create atoms, build knowledge graphs, run pattern-matching queries,
 perform graph rewriting, evaluate arithmetic, attach truth values,
-and more. See the [demo scripts](/demo) for examples.
+and more. See the [demo scripts](../demo) for examples.
 
 ### How do I clear the atomspace?
 ```scheme
@@ -54,7 +54,7 @@ Python and JSON shells are also available.
 
 ### Can I persist data?
 Yes. The AtomSpace supports RocksDB and PostgreSQL backends. See the
-[Architecture](/README.md#architecture) section in the README for
+[Architecture](../README.md) section in the README for
 details on storage backends.
 
 ### What are the system requirements?
@@ -71,7 +71,7 @@ details on storage backends.
 - **Reddit:** https://reddit.com/r/opencog
 
 ### How do I contribute to this repo?
-See [CONTRIBUTING.md](CONTRIBUTING.md).
+See [CONTRIBUTING.md](../CONTRIBUTING.md).
 
 ### How do I contribute to the OpenCog project itself?
 1. Join the [Discord](https://discord.gg/vxPc6sz)
@@ -87,4 +87,4 @@ See [CONTRIBUTING.md](CONTRIBUTING.md).
 
 ## Troubleshooting
 
-See [TROUBLESHOOTING.md](TROUBLESHOOTING.md) for common issues.
+See [TROUBLESHOOTING.md](../TROUBLESHOOTING.md) for common issues.

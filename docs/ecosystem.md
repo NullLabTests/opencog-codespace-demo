@@ -126,7 +126,7 @@ Storage backend implementations for the AtomSpace:
 | **Matthew Ikle'** | PLN, probabilistic reasoning |
 | **Lucius Greg Meredith** | MeTTa language design, process algebra |
 
-Full credits in [CONTRIBUTORS.md](/CONTRIBUTORS.md).
+Full credits in [CONTRIBUTORS.md](../CONTRIBUTORS.md).
 
 ## Next Generation: Hyperon
 

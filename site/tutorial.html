@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OpenCog Tutorial — Interactive Atomese Guide</title>
+  <style>
+    body { font-family: monospace; max-width: 800px; margin: 2em auto; padding: 0 1em; line-height: 1.6; background: #1a1a2e; color: #e0e0e0; }
+    h1, h2, h3 { color: #4fc3f7; }
+    pre { background: #16213e; padding: 1em; border-radius: 4px; overflow-x: auto; border-left: 3px solid #4fc3f7; }
+    code { font-family: monospace; }
+    .step { margin: 1.5em 0; padding: 1em; border: 1px solid #333; border-radius: 8px; }
+    .step h3 { margin-top: 0; }
+    .prompt { color: #81c784; }
+    .output { color: #ffb74d; }
+    button { background: #4fc3f7; color: #1a1a2e; border: none; padding: 0.5em 1em; border-radius: 4px; cursor: pointer; font-family: monospace; font-size: 14px; }
+    button:hover { background: #29b6f6; }
+    .copy { float: right; font-size: 12px; padding: 0.3em 0.6em; }
+  </style>
+</head>
+<body>
+  <h1>OpenCog AtomSpace Tutorial</h1>
+  <p>Interactive guide to the Atomese language. Paste these commands into the <a href="http://localhost:18080/websockets/demo.html" target="_blank" style="color:#4fc3f7;">WebSocket Shell</a> or pipe with <code>nc</code>.</p>
+
+  <div class="step">
+    <h3>Step 1: Create Concepts</h3>
+    <p>Atoms are the building blocks. <code>Concept</code> atoms represent named entities.</p>
+    <button class="copy" onclick="copy(this)">Copy</button>
+    <pre><code>(Concept "apple")
+(Concept "fruit")
+(Concept "red")</code></pre>
+  </div>
+
+  <div class="step">
+    <h3>Step 2: Build Relationships</h3>
+    <p>Links connect concepts into a knowledge graph.</p>
+    <button class="copy" onclick="copy(this)">Copy</button>
+    <pre><code>; apple IS-A fruit
+(Inheritance (Concept "apple") (Concept "fruit"))
+
+; apple HAS-PROPERTY red
+(Property (Concept "apple") (Concept "red"))</code></pre>
+  </div>
+
+  <div class="step">
+    <h3>Step 3: Query the Graph</h3>
+    <p>Use <code>Get</code> with variables to find matching patterns.</p>
+    <button class="copy" onclick="copy(this)">Copy</button>
+    <pre><code>; Find everything that inherits from "fruit"
+(cog-execute!
+    (Get (Inheritance (Variable "$what") (Concept "fruit"))))</code></pre>
+  </div>
+
+  <div class="step">
+    <h3>Step 4: Graph Rewriting</h3>
+    <p><code>Bind</code> finds a pattern and creates new atoms from it.</p>
+    <button class="copy" onclick="copy(this)">Copy</button>
+    <pre><code>; Everything that IS-A fruit also IS-A food
+(cog-execute!
+    (Bind
+        (Inheritance (Variable "$x") (Concept "fruit"))
+        (Inheritance (Variable "$x") (Concept "food"))))</code></pre>
+  </div>
+
+  <div class="step">
+    <h3>Step 5: Arithmetic</h3>
+    <p>Atomese has built-in arithmetic evaluation.</p>
+    <button class="copy" onclick="copy(this)">Copy</button>
+    <pre><code>(cog-evaluate! (Plus (Number 3) (Number 4)))
+(cog-evaluate! (Times (Number 6) (Number 7)))
+(cog-evaluate! (GreaterThan (Number 10) (Number 5)))</code></pre>
+  </div>
+
+  <div class="step">
+    <h3>Step 6: Truth Values</h3>
+    <p>Atoms can carry probabilistic truth values (strength, confidence).</p>
+    <button class="copy" onclick="copy(this)">Copy</button>
+    <pre><code>; Create with 90% strength, 80% confidence
+(cog-new-link 'InheritanceLink
+    (Concept "cat") (Concept "animal")
+    (cog-new-stv 0.9 0.8))</code></pre>
+  </div>
+
+  <div class="step">
+    <h3>Step 7: Knowledge Patterns</h3>
+    <p>Common real-world patterns in Atomese.</p>
+    <button class="copy" onclick="copy(this)">Copy</button>
+    <pre><code>; Set membership
+(Member (Concept "alice") (Concept "programmers"))
+
+; Event at a time
+(AtTime (Concept "meeting") (Time "2026-06-01T17:00:00"))
+
+; If-then rule
+(Implication (Concept "rain") (Concept "wet-ground"))</code></pre>
+  </div>
+
+  <hr>
+  <p style="text-align:center;color:#666;">Full docs at <a href="../docs/getting-started.md" style="color:#4fc3f7;">getting-started.md</a> and <a href="../docs/atomese-primer.md" style="color:#4fc3f7;">atomese-primer.md</a>.</p>
+
+  <script>
+    function copy(btn) {
+      const code = btn.nextElementSibling.querySelector('code');
+      const range = document.createRange();
+      range.selectNode(code);
+      window.getSelection().removeAllRanges();
+      window.getSelection().addRange(range);
+      document.execCommand('copy');
+      window.getSelection().removeAllRanges();
+      btn.textContent = 'Copied!';
+      setTimeout(() => { btn.textContent = 'Copy'; }, 2000);
+    }
+  </script>
+</body>
+</html>

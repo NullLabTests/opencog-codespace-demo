@@ -1,3 +1,12 @@
-# These are supported funding model platforms
+# Funding — Support OpenCog development
 
-github: NullLabTests
+github: [NullLabTests, opencog]
+
+# Open Collective
+open_collective: opencog
+
+# Custom links
+custom:
+  - https://opencog.org/donate
+  - https://wiki.opencog.org/Donations
+  - https://singularitynet.io

@@ -1,19 +1,23 @@
-## Summary
-One-line description of your change.
+## Description
 
-## Related Issue
-Closes #...
+<!-- Briefly describe the change. What does it add, fix, or improve? -->
 
-## Changes
-- List what changed
-- And why
+## Type of Change
 
-## Testing
-How did you test your changes?
+- [ ] Bug fix
+- [ ] New feature / demo script
+- [ ] Documentation improvement
+- [ ] Infrastructure / CI
+- [ ] Other (please describe)
 
-- [ ] Ran `cat demo.scm | nc localhost 17001`
-- [ ] Verified no broken links in docs
-- [ ] README updated if needed
+## Checklist
 
-## Screenshots
-If applicable.
+- [ ] I have read [CONTRIBUTING.md](../CONTRIBUTING.md)
+- [ ] My code follows the project's style guidelines
+- [ ] I have tested my changes against a running CogServer (if applicable)
+- [ ] All existing tests pass (`make test-all`)
+- [ ] I have updated the README or docs if needed
+
+## Related Issues
+
+<!-- Link any related issues using #issue-number -->

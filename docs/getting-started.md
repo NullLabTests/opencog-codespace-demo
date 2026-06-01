@@ -94,4 +94,4 @@ how the system may use it.
 
 - Read the [Atomese Primer](atomese-primer.md) for a deep tour of the language
 - Check the [Architecture](architecture.md) to understand how all components fit
-- Try the [Demo Scripts](../README.md#demo-scripts) in this repo for hands-on examples
+- Try the [Demo Scripts](../README.md) in this repo for hands-on examples

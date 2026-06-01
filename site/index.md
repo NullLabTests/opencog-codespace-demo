@@ -26,11 +26,11 @@ telnet localhost 17001
 
 ## Documentation
 
-- [Getting Started](/docs/getting-started.md)
-- [Atomese Primer](/docs/atomese-primer.md)
-- [Architecture](/docs/architecture.md)
-- [Demo Scripts](/demo)
-- [API Reference](/docs/api.md)
+- [Getting Started](../docs/getting-started.md)
+- [Atomese Primer](../docs/atomese-primer.md)
+- [Architecture](../docs/architecture.md)
+- [Demo Scripts](../demo)
+- [API Reference](../docs/api.md)
 
 ## Community
 
