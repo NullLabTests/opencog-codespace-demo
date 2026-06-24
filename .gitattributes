@@ -1,29 +1,10 @@
-# Auto-detect text files
+# Auto-detect text files and normalize line endings
 * text=auto
 
-# Source
-*.scm    text diff
-*.py     text diff
-*.sh     text diff eol=lf
-*.yaml   text diff
-*.yml    text diff
-*.json   text diff
-*.md     text diff
-*.txt    text diff
+# Python
+*.py text diff=python
 
 # Binary
-*.png    binary
-*.gif    binary
-*.jpg    binary
-*.svg    text diff
-
-# Config
-.env.example text
-.gitignore   text
-.gitattributes text
-.editorconfig text
-Dockerfile   text diff
-Makefile     text diff
-
-# GitHub Actions
-.github/**  text
+*.png binary
+*.jpg binary
+*.ico binary
